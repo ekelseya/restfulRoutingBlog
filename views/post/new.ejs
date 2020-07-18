@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">New Blog Post</div>
+    <form action="/posts" method="post" class="ui form">
+        <div class="field">
+            <label for="title">Give your post a title</label>
+            <input type="text"
+                   id="title"
+                   name="title"
+                   placeholder="Post Title">
+        </div>
+        <div class="field">
+            <label for="body">What are you thinking?</label>
+            <textarea id="body"
+                      name="body"
+                      placeholder="Share your thoughts" required></textarea>
+        </div>
+        <button class="ui big basic animated button" type="submit">
+            <div class="visible content">Submit</div>
+            <div class="hidden content">
+                <i class="edit outline icon"></i>
+            </div>
+        </button>
+    </form>
+</div>
+
+<%- include("../partials/footer") %>

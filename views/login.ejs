@@ -1,0 +1,37 @@
+<%- include("./partials/header") %>
+<div class="ui main text container">
+    <h1 class="ui header">Login to your account!</h1>
+    <div class="ui form">
+        <form action="/login" method="POST">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text"
+                       class="form-control"
+                       id="username" name="username"
+                       placeholder="Choose a username">
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" class="form-control"
+                       id="password"
+                       name="password"
+                       aria-describedby="passwordHelp"
+                       placeholder="Password">
+                <small id="passwordHelp" class="form-text text-muted">
+                    Never share your password with anyone else!
+                </small>
+            </div>
+            <div class="field">
+                <button class="ui animated button" tabindex="0" type="submit">
+                    <div class="visible content">Log in</div>
+                    <div class="hidden content">
+                        <i class="right arrow icon"></i>
+                    </div>
+                </button>
+            </div>
+        </form>
+        <p>Not a member? <a href="/register">Sign up here!</a></p>
+        <p><a href="/posts">See all posts</a></p>
+    </div>
+</div>
+<%- include("./partials/footer") %>

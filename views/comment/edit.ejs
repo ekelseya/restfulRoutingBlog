@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+<!--TODO: refactor to semantic ui-->
+<div class="container">
+    <div style="width: 60%; margin: 0 auto">
+        <div class="row">
+            <h1 class="mx-3 my-4">Edit your comment on <%=post.title%></h1>
+        </div>
+        <form action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=PUT" method="post">
+            <div class="form-group">
+                <label for="comment[text]">Comment</label>
+                <input type="text"
+                       class="form-control"
+                       id="comment[text]" name="comment[text]"
+                       value="<%=comment.text%>">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+        <form class="mt-2"
+              action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE"
+              method="post">
+            <div class="form-group">
+                <button class="btn btn-danger btn-sm">Delete Comment</button>
+            </div>
+        </form>
+        <a href="/posts/<%=post._id%>">Return to <%=post.title%></a>
+    </div>
+</div>
+<%- include("../partials/footer") %>

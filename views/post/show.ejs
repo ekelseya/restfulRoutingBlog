@@ -1,0 +1,86 @@
+<%- include("../partials/header") %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        <%=post.title%>
+    </div>
+    <div class="ui top attached">
+        <div class="description">
+            <p><%-post.body%></p>
+        </div>
+        <br>
+        <div class="extra">
+            Posted at <%=post.created.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})%> on <%=post.created.toLocaleDateString([], {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})%>
+        </div>
+        <br>
+        <% if (currentUser && post.author.id.equals(currentUser._id)) { %>
+        <div class="ui grid">
+            <div class="eight wide column">
+                <a href="/posts/<%=post._id %>/edit">
+                    <div class="ui animated basic orange button" tabindex="0">
+                        <div class="visible content">Edit</div>
+                        <div class="hidden content">
+                            <i class="edit outline icon"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="eight wide column">
+                <form action="/posts/<%=post._id%>?_method=DELETE" method="post">
+                    <button class="ui right floated animated red basic button" tabindex="0">
+                        <div class="visible content">Delete</div>
+                        <div class="hidden content">
+                            <i class="trash alternate outline icon"></i>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+        <div class="ui segments">
+            <div class="ui segment">
+                <a href="/posts/<%=post._id%>/comments/new">
+                    <div class="ui animated basic violet button" tabindex="0">
+                        <div class="visible content">Leave a comment</div>
+                        <div class="hidden content">
+                            <i class="edit outline icon"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% post.comments.forEach(function (comment) { %>
+            <div class="ui segment">
+                <strong><%=comment.author.username%></strong> - <%=comment.text%>
+                <br/>
+                <br/>
+                <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                <div class="ui right aligned grid">
+                    <div class="sixteen wide column">
+                        <span>
+                            <a href="/posts/<%=post._id%>/comments/<%=comment._id%>/edit">
+                                <div class="ui small right aligned animated basic orange button" tabindex="0">
+                                    <div class="visible content">Edit</div>
+                                    <div class="hidden content">
+                                        <i class="edit outline icon"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <form action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" style="display: inline;">
+                                <button class="ui small right aligned animated red basic button" tabindex="0">
+                                    <div class="visible content">Delete</div>
+                                    <div class="hidden content">
+                                        <i class="trash alternate outline icon"></i>
+                                    </div>
+                                </button>
+                            </form>
+                        </span>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <% })%>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="ekelseya">
+    <meta name="description" content="Mongo, Express, Node Blog Application">
+    <meta name="keywords" content="MongoDB, SemanticUI, Node, Express, EJS, HTML, JavaScript">
+    <title>ekelseya's Blog</title>
+
+    <!-- You MUST include jQuery before Fomantic -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/app.css">
+</head>
+<body>
+    <nav class="ui fixed inverted menu">
+        <a class="item" href="/"><i class="newspaper outline icon"></i>ekelseya's Blog</a>
+        <a class="item" href="/posts">All posts</a>
+        <% if (currentUser && currentUser.isAdmin) { %>
+        <a class="item" href="/posts/new">Add New Post</a>
+        <% } %>
+        <div class="right menu">
+<!--            TODO: Add welcome "username"-->
+            <% if (!currentUser) { %>
+            <a class="item" href="/login">Sign In</a>
+            <a class="item" href="/register">Sign Up</a>
+            <!--            TODO: Add link to logout-->
+            <% } else { %>
+            <span class="item">Welcome, <%=currentUser.username%></span>
+            <a class="item" href="/logout">Logout</a>
+            <% } %>
+        </div>
+    </nav>
+    <% if (success && success.length > 0) { %>
+        <div class="ui success message" style="margin-top: 60px;">
+            <%= success %>
+        </div>
+    <% } %>
+    <% if (error && error.length > 0) { %>
+        <div class="ui warning message" style="margin-top: 60px;">
+            <%= error %>
+        </div>
+    <% } %>
