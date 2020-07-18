@@ -16,8 +16,6 @@ const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
 
-const port = 3000;
-
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -54,4 +52,6 @@ app.use(authRoutes);
 app.use("/posts", postRoutes);
 app.use("/posts/:id/comments", commentRoutes);
 
-app.listen(port, () => console.log(`RESTful Blog Application listening at http://localhost:${port}`));
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("We did it!");
+});
