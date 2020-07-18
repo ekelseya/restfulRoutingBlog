@@ -6,7 +6,7 @@ Includes session based authentication with Passport.js.
 ---
 ## Requirements
 
-For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
+For development, you will only need Node.js installed in your environement.
 
 ### Node
 - #### Node installation on Windows
@@ -24,13 +24,11 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 - #### Other Operating Systems
   You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-If the installation was successful, you should be able to run the following command.
+If the installation was successful, you should be able to run the following commands.
 
     $ node --version
-    v8.11.3
 
     $ npm --version
-    6.1.0
 
 If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
@@ -40,7 +38,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
   The project uses MongoDB as a database. Find the full installation instructions on the [official MongoDB website] (https://docs.mongodb.com/manual/installation/).
   
-  Once installed, you should be able to run the following command to start the Mongo server.
+  Once installed, run the following command to start the Mongo server.
   
       $ mongod 
 ---
