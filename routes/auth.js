@@ -4,7 +4,7 @@ const passport = require('passport');
 const User = require('../models/user');
 
 router.get('/', function (req, res) {
-    res.render('landing')
+    res.redirect('/posts')
 });
 
 router.get('/register', function (req, res) {
