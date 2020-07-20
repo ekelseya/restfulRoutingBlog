@@ -49,9 +49,45 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
     $ cd restfulRoutingBlog
     $ npm install
 
+## Configure the project
+
+### index.js
+
+  You will need to make some changes to index.js:
+    
+  Change 
+  
+    mongoose.connect(process.env.DATABASEURL);
+    
+  to:
+  
+    mongoose.connect("mongodb://localhost/blog");
+  
+  Note: you can name your database whatever you want!
+  
+  Change
+  
+    app.listen(process.env.PORT, process.env.IP, function(){console.log("We did it!");
+    
+  to:
+  
+    app.listen(3000, function(){console.log("We did it!");
+    
+  Optionally, you can set DATABASEURL and PORT to your own environmental variables.
+  
+### models/users.js
+
+  Users are not granted admin permission by default. If you want to allow a user to create posts, you will have to change isAdmin to true.
+  
+  You can either do this in your database, or change the default in the User schema.
+
 ## Running the project
 
-    $ node index.js
+  To start the project, enter the following in the terminal:
+  
+    $ npm start
+
+  Navigate to https://localhost:3000/ and create your first user!
     
 ### Credit to Igor Mandello for the README template
 
