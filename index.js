@@ -10,7 +10,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const User = require("./models/user.js");
 
